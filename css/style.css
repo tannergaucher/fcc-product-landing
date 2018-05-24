@@ -1,3 +1,15 @@
+body {
+  margin:0 auto;
+  padding:0;
+  height: 100%;
+}
+
+html {
+  margin:0 auto;
+  padding:0;
+  height: 100%;
+}
+
 * {
   font-family: 'Lato', sans-serif;
 }
@@ -18,14 +30,15 @@ a {
   font-size: 20px;
   color: black;
   font-weight: lighter;
+  text-decoration: none;
 }
 
-.sticky {
-  position: -webkit-sticky;
-  position: -moz-sticky;
-  position: -ms-sticky;
-  position: -o-sticky;
-  top: 0px;
+a:hover {
+  text-decoration: underline;
+}
+
+.none {
+  display: none;
 }
 
 .nav-link {
@@ -34,11 +47,10 @@ a {
 
 #header {
   padding: 5px;
-  background: lightgrey;
+  border: 1px solid black;
+  background: white;
   display: flex;
   align-items: flex-end;
-  border-radius: 3px;
-  margin-bottom: 40px;
   position: sticky;
   margin-bottom: 100px;
 }
@@ -61,29 +73,30 @@ a {
   margin-right: 5px;
 }
 
-#email {
+#offer {
   display: flex;
   flex-direction: column;
   width: 50%;
   margin: auto;
   text-align: center;
-  border: solid .5px black;
+  background: rgba(0, 0, 0, .05);
   border-radius: 4px;
   padding: 10px;
   margin-bottom: 80px;
+  min-width: 223px;
 }
 
 #email button {
   width: 40%;
   height: 30px;
   margin: auto;
-  background: rgba(0, 0, 0, .2);
-  border-radius: 5px;
 }
 
 .icon {
-  font-size: 40px;
-  width: 10%;
+  font-size: 60px;
+  opacity: .2;
+  width: 100px;
+  height: 100px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -91,6 +104,10 @@ a {
 
 #info {
   margin-bottom: 80px;
+}
+
+.info {
+  margin-left: 20px;
 }
 
 #info-1 {
@@ -109,47 +126,81 @@ a {
   margin-bottom: 80px;
 }
 
-#video {
+.video-wrapper {
+  position: relative;
+  padding-bottom: 56.25%;
+  /* 16:9 */
+  padding-top: 25px;
+  height: 0;
   display: flex;
   margin-bottom: 150px;
 }
 
+.video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+ 
 #video h3 {
   margin-right: 30px;
 }
 
 #models {
   display: flex;
+  justify-content: space-around;
 }
 
 .card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
   width: 30%;
-  border: .5px solid black;
+  border: 1px solid black;
   border-radius: 12px;
-  padding: 10px;
-  margin: 20px;
+  padding: 5%;
+  margin: 1%;
   text-align: center;
+  margin-bottom: 50px;
 }
 
 .card button {
   width: 80px;
   height: 30px;
   font-size: 12px;
+  text-align: center;
+}
+
+.btn {
+  color: black;
+  background: lightgrey;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  background: white;
+  border: 1px solid black;
+  box-shadow: none;
+  font-size: 16px;
+}
+
+.btn:hover {
+  background: black;
+  color: white;
 }
 
 .model-name {
-  background: rgba(0, 0, 0, .1);
+  color: rgba(0, 0, 0, .8);
+}
+
+.model-price {
+  margin-bottom: 20px;
 }
 
 .model-description {
-  height: 80px;
   text-align: justify;
-}
-
-.card img {
-  height: 300px;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  margin-bottom: 30px;
 }
 
 form {
@@ -163,27 +214,83 @@ input {
   width: 60%;
   margin: auto;
   margin-bottom: 20px;
-  font-size: 12px;
+  font-size: 16px;
 }
 
 footer {
-  background: rgba(0, 0, 0, .02);
+  background: lightgrey;
   padding: 20px;
   text-align: right;
 }
 
+footer a {
+  margin-left: 50px;
+}
+
+#burger {
+  font-size: 25px;
+  margin-right: 10px;
+}
+
+.sticky {
+  position: -webkit-sticky;
+  position: -moz-sticky;
+  position: -ms-sticky;
+  position: -o-sticky;
+  top: 0px;
+}
+
 @media(max-width: 992px) {
-  /* #nav-links {
-    display: flex;
-    flex-direction: column;
-  } */
+  .nav-link {
+    margin-right: 45px;
+  }
 }
 
 @media(max-width: 768px) {
-  /* #nav-links {
+  #logo {
     display: flex;
     flex-direction: column;
-  } */
+    align-items: flex-start;
+  }
+  #nav-links {
+    display: flex;
+    flex-direction: column;
+  }
+  #models {
+    display: flex;
+    flex-direction: column;
+  }
+  .card {
+    width: 90%;
+  }
+  #email {
+    width: 100%;
+  }
 }
 
-@media(max-width: 480px) {}
+@media(max-width: 480px) {
+  #header-img {
+    display: none;
+  }
+  #nav-links {
+    display: none;
+  }
+  #burger {
+    display: flex;
+  }
+  #nav-bar {
+    display: flex;
+    align-items: center;
+  }
+  .in {
+    display: flex;
+    flex-direction: column;
+  }
+  footer {
+    display: flex;
+    justify-content: space-around;
+  }
+  footer a {
+    margin-left: 10px;
+  }
+}
